@@ -1,0 +1,94 @@
+<form [formGroup]="filterForm">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="nameFilter"
+              class="form-control"
+              formControlName="idFilter"
+            />
+            <label mdbLabel class="form-label" for="nameFilter">ID</label>
+          </mdb-form-control>
+        </th>
+        <th scope="col">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="nameFilter"
+              class="form-control"
+              formControlName="nameFilter"
+            />
+            <label mdbLabel class="form-label" for="nameFilter">NAME</label>
+          </mdb-form-control>
+        </th>
+        <th scope="col">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="salaryFilter"
+              class="form-control"
+              formControlName="salaryFilter"
+            />
+            <label mdbLabel class="form-label" for="salaryFilter"
+              >SALARY($)</label
+            >
+          </mdb-form-control>
+        </th>
+        <th scope="col">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="emailFilter"
+              class="form-control"
+              formControlName="emailFilter"
+            />
+            <label mdbLabel class="form-label" for="emailFilter">EMAIL</label>
+          </mdb-form-control>
+        </th>
+        <th scope="col">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="teamFilter"
+              class="form-control"
+              formControlName="teamFilter"
+            />
+            <label mdbLabel class="form-label" for="teamFilter">TEAM</label>
+          </mdb-form-control>
+        </th>
+        <th scope="col">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="departmentFilter"
+              class="form-control"
+              formControlName="departmentFilter"
+            />
+            <label mdbLabel class="form-label" for="departmentFilter"
+              >DEPARTMENT</label
+            >
+          </mdb-form-control>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of filteredEmployees">
+        <th scope="row">{{ employee.id }}</th>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.team }}</td>
+        <td>{{ employee.department }}</td>
+      </tr>
+    </tbody>
+  </table>
+</form>
