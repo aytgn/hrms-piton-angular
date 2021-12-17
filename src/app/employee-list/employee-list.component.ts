@@ -14,15 +14,14 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   //SUBSCRIPTIONS
   getEmployeesSub: Subscription = new Subscription();
   filterFormSub: Subscription = new Subscription();
+  //CONSTRUCTOR
   constructor(
     private appStateService: AppStateService,
     private employeeListService: EmployeeListService
   ) {}
+  //MAIN SELECTORS
   employees: Array<Employee> = [];
   filteredEmployees: Array<Employee> = [];
-
-  //form
-
   filterForm = new FormGroup({
     idFilter: new FormControl(''),
     nameFilter: new FormControl(''),
@@ -31,15 +30,16 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     teamFilter: new FormControl(''),
     departmentFilter: new FormControl(''),
   });
-
+  //LIFECYCLE METHODS
   ngOnInit() {
+    //Get Employees from STATE
     this.getEmployeesSub = this.appStateService
       .getEmployees()
       .subscribe((employees) => {
         this.employees = employees;
         this.filteredEmployees = this.employees;
       });
-
+    // Filter Employees
     this.filterFormSub = this.filterForm.valueChanges.subscribe(
       ({
         idFilter: id,
@@ -49,39 +49,13 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
         teamFilter: team,
         departmentFilter: department,
       }) => {
-        this.filteredEmployees = this.employees
-          .filter((employee) => {
-            return id != '' ? employee.id === Number(id) : true;
-          })
-          .filter((employee) => {
-            return name != ''
-              ? employee.name.toLowerCase().includes(name.toLowerCase())
-              : true;
-          })
-          .filter((employee) => {
-            return salary != '' ? employee.salary > Number(salary) : true;
-          })
-          .filter((employee) => {
-            return email != ''
-              ? employee.email.toLowerCase().includes(email.toLowerCase())
-              : true;
-          })
-          .filter((employee) => {
-            return team != ''
-              ? employee.team.toLowerCase().includes(team.toLowerCase())
-              : true;
-          })
-          .filter((employee) => {
-            return department != ''
-              ? employee.department
-                  .toLowerCase()
-                  .includes(department.toLowerCase())
-              : true;
-          });
+        this.filteredEmployees = this.employeeListService.filterEmployees(
+          this.employees,
+          { id, name, salary, email, team, department }
+        );
       }
     );
   }
-
   ngOnDestroy(): void {
     this.getEmployeesSub.unsubscribe();
     this.filterFormSub.unsubscribe();
