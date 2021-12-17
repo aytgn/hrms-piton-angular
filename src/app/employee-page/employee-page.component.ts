@@ -7,7 +7,8 @@ import { AppStateService } from '../services/appState.service';
 
 @Component({
   selector: 'app-employee-page',
-  templateUrl: './employee.page.component.html',
+  templateUrl: './employee-page.component.html',
+  styleUrls: ['./employee-page.component.scss'],
 })
 export class EmployeePageComponent implements OnInit, OnDestroy {
   currentEmployee: Employee | undefined;
