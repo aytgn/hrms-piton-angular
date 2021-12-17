@@ -1,1 +1,5 @@
-Hello from employee Page
+<div *ngIf="currentEmployee != undefined">
+  <h1>{{ currentEmployee.name }}</h1>
+  <h2>{{ currentEmployee.email }}</h2>
+  <h3>{{ currentEmployee.salary }}</h3>
+</div>
