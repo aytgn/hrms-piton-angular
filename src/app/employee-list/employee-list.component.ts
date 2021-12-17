@@ -9,6 +9,7 @@ import { EmployeeListService } from './employee-list.service';
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   providers: [EmployeeListService],
+  styleUrls: ['./employee-list.component.scss'],
 })
 export class EmployeeListComponent implements OnInit, OnDestroy {
   //SUBSCRIPTIONS

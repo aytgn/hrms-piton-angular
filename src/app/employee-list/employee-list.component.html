@@ -1,8 +1,8 @@
 <form [formGroup]="filterForm">
-  <table class="table table-hover">
+  <table class="table table-hover table-responsive align-middle">
     <thead class="table-info">
       <tr>
-        <th scope="col">
+        <th scope="col" class="id-width">
           <mdb-form-control>
             <input
               mdbInput
@@ -14,7 +14,7 @@
             <label mdbLabel class="form-label" for="nameFilter">ID</label>
           </mdb-form-control>
         </th>
-        <th scope="col">
+        <th scope="col" class="name-width">
           <mdb-form-control>
             <input
               mdbInput
@@ -26,7 +26,7 @@
             <label mdbLabel class="form-label" for="nameFilter">NAME</label>
           </mdb-form-control>
         </th>
-        <th scope="col">
+        <th scope="col" class="salary-width">
           <mdb-form-control>
             <input
               mdbInput
@@ -40,7 +40,7 @@
             >
           </mdb-form-control>
         </th>
-        <th scope="col">
+        <th scope="col" class="email-width">
           <mdb-form-control>
             <input
               mdbInput
@@ -52,7 +52,7 @@
             <label mdbLabel class="form-label" for="emailFilter">EMAIL</label>
           </mdb-form-control>
         </th>
-        <th scope="col">
+        <th scope="col" class="team-width">
           <mdb-form-control>
             <input
               mdbInput
@@ -64,7 +64,7 @@
             <label mdbLabel class="form-label" for="teamFilter">TEAM</label>
           </mdb-form-control>
         </th>
-        <th scope="col">
+        <th scope="col" class="department-width">
           <mdb-form-control>
             <input
               mdbInput
@@ -82,12 +82,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let employee of filteredEmployees">
-        <th scope="row">{{ employee.id }}</th>
+        <th scope="row" class="text-center">{{ employee.id }}</th>
         <td>{{ employee.name }}</td>
-        <td>{{ employee.salary }}</td>
+        <td class="text-center">{{ employee.salary }}</td>
         <td>{{ employee.email }}</td>
-        <td>{{ employee.team }}</td>
-        <td>{{ employee.department }}</td>
+        <td class="text-center">{{ employee.team }}</td>
+        <td class="text-center">{{ employee.department }}</td>
       </tr>
     </tbody>
   </table>
