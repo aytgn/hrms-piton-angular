@@ -5,6 +5,7 @@ import { Department } from 'src/state/department/department.interface';
 import { Employee } from 'src/state/employee/employee.interface';
 import { selectDepartments } from 'src/state/selectors';
 import { selectEmployees } from 'src/state/selectors';
+import { filter, map, single } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AppStateService {
@@ -14,10 +15,19 @@ export class AppStateService {
     this._employees = this.store.select(selectEmployees);
     this._departments = this.store.select(selectDepartments);
   }
-  getEmployees() {
+  getEmployees(): Observable<Array<Employee>> {
     return this._employees;
   }
-  getDepartments() {
+  getDepartments(): Observable<Array<Department>> {
     return this._departments;
+  }
+  getEmployeeById(employeeId: number): Observable<Employee | undefined> {
+    return this._employees.pipe(
+      map((employees) => {
+        return employees.find((employee) => {
+          return employee.id === employeeId;
+        });
+      })
+    );
   }
 }

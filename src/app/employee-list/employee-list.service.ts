@@ -31,7 +31,7 @@ export class EmployeeListService {
           : true;
       })
       .filter((employee) => {
-        return salary != '' ? employee.salary > Number(salary) : true;
+        return salary != '' ? employee.salary >= Number(salary) : true;
       })
       .filter((employee) => {
         return email != ''
