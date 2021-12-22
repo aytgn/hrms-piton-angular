@@ -12,9 +12,11 @@ export class DashboardComponent implements OnInit {
   numberOfEmployees: Observable<number> = new Observable();
   numberOfDepartments: Observable<number> = new Observable();
   numberOfTeams: Observable<number> = new Observable();
+  monthlySalaryExpense: Observable<number> = new Observable();
   ngOnInit(): void {
     this.numberOfEmployees = this.appStateService.getNumberOfEmployees();
     this.numberOfDepartments = this.appStateService.getNumberOfDepartments();
     this.numberOfTeams = this.appStateService.getNumberOfTeams();
+    this.monthlySalaryExpense = this.appStateService.getMonthlySalaryExpense();
   }
 }

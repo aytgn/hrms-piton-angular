@@ -58,4 +58,15 @@ export class AppStateService {
       })
     );
   }
+  getMonthlySalaryExpense(): Observable<number> {
+    return this._employees.pipe(
+      map((employees) => {
+        let expense: number = 0;
+        employees.forEach((employee) => {
+          expense += employee.salary;
+        });
+        return expense;
+      })
+    );
+  }
 }
