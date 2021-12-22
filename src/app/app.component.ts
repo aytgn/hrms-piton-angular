@@ -3,7 +3,7 @@ import { StrapiApiService } from './services/strapiApi.service';
 import { Store } from '@ngrx/store';
 import { retrieveEmployees } from 'src/state/employee/employee.actions';
 import { retrieveDepartments } from 'src/state/department/department.actions';
-import { AppStateService } from './services/appState.service';
+import { retrieveTeams } from 'src/state/team/team.actions';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +19,11 @@ export class AppComponent implements OnInit {
     this.strapiApiService.getEmployees().then((employees) => {
       this.store.dispatch(retrieveEmployees({ employees }));
     });
-
     this.strapiApiService.getDepartments().then((departments) => {
       this.store.dispatch(retrieveDepartments({ departments }));
+    });
+    this.strapiApiService.getTeams().then((teams) => {
+      this.store.dispatch(retrieveTeams({ teams }));
     });
   }
 }

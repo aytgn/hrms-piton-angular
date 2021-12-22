@@ -25,9 +25,16 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { departmentReducer } from 'src/state/department/department.reducer';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { teamReducer } from 'src/state/team/team.reducer';
 
 @NgModule({
-  declarations: [AppComponent, EmployeeListComponent, EmployeePageComponent],
+  declarations: [
+    AppComponent,
+    EmployeeListComponent,
+    EmployeePageComponent,
+    DashboardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     StoreModule.forRoot({
       employees: employeeReducer,
       departments: departmentReducer,
+      teams: teamReducer,
     }),
     MdbAccordionModule,
     MdbCarouselModule,

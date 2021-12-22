@@ -8,5 +8,8 @@ export interface Employee {
   department: string;
   phone: string;
   address: string;
-  imageUrl?: string;
+  imageUrl: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
+  project?: string;
 }

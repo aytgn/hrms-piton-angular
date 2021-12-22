@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/state/employee/employee.interface';
+import { Team } from 'src/state/team/team.interface';
 
 @Injectable({ providedIn: 'root' })
 export class StrapiApiService {
@@ -31,7 +32,6 @@ export class StrapiApiService {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const employeesData: Array<any> = data.data;
         const employees: Array<Employee> = [];
         employeesData.forEach((employeeData) => {
@@ -44,6 +44,9 @@ export class StrapiApiService {
             phone,
             address,
             imageUrl,
+            githubUrl,
+            linkedinUrl,
+            project,
           }: {
             name: string;
             email: string;
@@ -51,6 +54,9 @@ export class StrapiApiService {
             phone: string;
             address: string;
             imageUrl: string;
+            githubUrl?: string;
+            linkedinUrl?: string;
+            project?: string;
           } = employeeData.attributes;
           const auth: string =
             employeeData.attributes.auth.data.attributes.name;
@@ -68,6 +74,9 @@ export class StrapiApiService {
             phone,
             address,
             imageUrl,
+            githubUrl,
+            linkedinUrl,
+            project,
           };
           employees.push(employee);
         });
@@ -85,15 +94,37 @@ export class StrapiApiService {
         departmentsData.forEach((departmentData) => {
           const id = departmentData.id;
           const name = departmentData.attributes.name;
-          const teams: Array<any> = [];
+          const teamIds: Array<number> = [];
           departmentData.attributes.teams.data.forEach((teamData: any) => {
-            let name = teamData.attributes.name;
-            teams.push(name);
+            let teamId = teamData.id;
+            teamIds.push(teamId);
           });
-          const department = { id, name, teams };
+          const department = { id, name, teamIds };
           departments.push(department);
         });
         return departments;
+      });
+  }
+  async getTeams() {
+    return fetch('http://localhost:1337/api/teams?populate=*')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const teams: Array<Team> = [];
+        const teamsData: Array<any> = data.data;
+        teamsData.forEach((teamData) => {
+          const id: number = teamData.id;
+          const name: string = teamData.attributes.name;
+          const departmentId: number = teamData.attributes.department.data.id;
+          const employeeIds: Array<number> = [];
+          teamData.attributes.employees.data.forEach((employee: any) => {
+            return employeeIds.push(employee.id);
+          });
+          const team = { id, name, departmentId, employeeIds };
+          teams.push(team);
+        });
+        return teams;
       });
   }
 }
