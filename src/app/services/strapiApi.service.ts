@@ -31,6 +31,7 @@ export class StrapiApiService {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         const employeesData: Array<any> = data.data;
         const employees: Array<Employee> = [];
         employeesData.forEach((employeeData) => {
@@ -40,14 +41,34 @@ export class StrapiApiService {
             name,
             email,
             salary,
-          }: { name: string; email: string; salary: number } =
-            employeeData.attributes;
+            phone,
+            address,
+            imageUrl,
+          }: {
+            name: string;
+            email: string;
+            salary: number;
+            phone: string;
+            address: string;
+            imageUrl: string;
+          } = employeeData.attributes;
           const auth: string =
             employeeData.attributes.auth.data.attributes.name;
           const team: string =
             employeeData.attributes.team.data.attributes.name;
           const department = this._employeesDepartment(team);
-          employee = { id, name, email, salary, auth, team, department };
+          employee = {
+            id,
+            name,
+            email,
+            salary,
+            auth,
+            team,
+            department,
+            phone,
+            address,
+            imageUrl,
+          };
           employees.push(employee);
         });
         return employees;

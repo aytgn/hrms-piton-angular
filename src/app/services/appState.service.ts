@@ -25,17 +25,7 @@ export class AppStateService {
     return this._employees.pipe(
       map((employees) => {
         return employees.find((employee) => {
-          if (employee.id === employeeId) return true;
-          else
-            return {
-              id: 0,
-              name: 'string',
-              auth: 'string',
-              salary: 0,
-              email: 'string',
-              team: 'string',
-              department: 'string',
-            };
+          return employee.id === employeeId;
         });
       })
     );

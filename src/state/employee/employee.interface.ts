@@ -6,4 +6,7 @@ export interface Employee {
   email: string;
   team: string;
   department: string;
+  phone: string;
+  address: string;
+  imageUrl?: string;
 }
