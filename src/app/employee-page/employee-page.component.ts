@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { filter, mergeMap } from 'rxjs/operators';
 import { Employee } from 'src/state/employee/employee.interface';
 import { AppStateService } from '../services/appState.service';
 
@@ -11,26 +11,18 @@ import { AppStateService } from '../services/appState.service';
   styleUrls: ['./employee-page.component.scss'],
 })
 export class EmployeePageComponent implements OnInit, OnDestroy {
-  currentEmployee: Employee | undefined;
-  currentEmployeeSub: Subscription = new Subscription();
+  employee: Observable<Employee> = new Observable();
+
   constructor(
     private route: ActivatedRoute,
     private appStateService: AppStateService
   ) {}
   ngOnInit(): void {
-    this.currentEmployeeSub = this.route.params
-      .pipe(
-        mergeMap((params) => {
-          return this.appStateService.getEmployeeById(
-            Number(params.employeeId)
-          );
-        })
-      )
-      .subscribe((employee) => {
-        this.currentEmployee = employee;
-      });
+    this.employee = this.route.params.pipe(
+      mergeMap((params) => {
+        return this.appStateService.getEmployeeById(Number(params.employeeId));
+      })
+    ) as Observable<Employee>;
   }
-  ngOnDestroy(): void {
-    this.currentEmployeeSub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }

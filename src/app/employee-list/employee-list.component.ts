@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Employee } from 'src/state/employee/employee.interface';
 import { AppStateService } from '../services/appState.service';
@@ -18,7 +19,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
   //CONSTRUCTOR
   constructor(
     private appStateService: AppStateService,
-    private employeeListService: EmployeeListService
+    private employeeListService: EmployeeListService,
+    private router: Router
   ) {}
   //MAIN SELECTORS
   employees: Array<Employee> = [];
@@ -31,6 +33,15 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     teamFilter: new FormControl(''),
     departmentFilter: new FormControl(''),
   });
+  goEmployeePage(event: any) {
+    if (event.target.nodeName === 'BUTTON') {
+      const employeeId = Number(
+        event.target.parentNode.parentNode.firstChild.firstChild.nodeValue
+      );
+      console.log(employeeId);
+      this.router.navigate(['/employee_page', employeeId]);
+    }
+  }
   //LIFECYCLE METHODS
   ngOnInit() {
     //Get Employees from STATE

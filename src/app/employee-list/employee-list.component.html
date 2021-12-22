@@ -78,16 +78,36 @@
             >
           </mdb-form-control>
         </th>
+        <th scope="col" class="department-width">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="departmentFilter"
+              class="form-control"
+              formControlName="departmentFilter"
+            />
+            <label mdbLabel class="form-label" for="departmentFilter"
+              >PAGE</label
+            >
+          </mdb-form-control>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employee of filteredEmployees">
+      <tr
+        *ngFor="let employee of filteredEmployees"
+        (click)="goEmployeePage($event)"
+      >
         <th scope="row" class="text-center">{{ employee.id }}</th>
         <td>{{ employee.name }}</td>
         <td class="text-center">{{ employee.salary }}</td>
         <td>{{ employee.email }}</td>
         <td class="text-center">{{ employee.team }}</td>
         <td class="text-center">{{ employee.department }}</td>
+        <td class="text-center">
+          <button mdbRipple type="button" class="btn btn-danger">Employee Page</button>
+        </td>
       </tr>
     </tbody>
   </table>

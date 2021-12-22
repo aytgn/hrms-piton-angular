@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from 'src/state/employee/employee.interface';
 
 @Injectable()
 export class EmployeeListService {
+  constructor(private router: Router) {}
   filterEmployees(
     employees: Array<Employee>,
     {
