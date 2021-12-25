@@ -84,7 +84,6 @@ export class AppStateService {
       map((data) => {
         const teamsArray = data[0];
         const employeeArray = data[1];
-
         const teamSalaryArray: any[] = [];
         teamsArray.forEach((team) => {
           let teamSalary = 0;
@@ -94,12 +93,9 @@ export class AppStateService {
           teamEmployees.forEach((employee) => {
             teamSalary += employee.salary;
           });
-          console.log(team.name);
-          console.log(teamSalary);
-
           teamSalaryArray.push({ teamName: team.name, teamSalary: teamSalary });
-          console.log(teamSalaryArray);
         });
+        return teamSalaryArray;
       })
     );
   }
