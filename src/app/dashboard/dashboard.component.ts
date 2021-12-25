@@ -13,6 +13,10 @@ export class DashboardComponent implements OnInit {
   numberOfDepartments: number = 0;
   numberOfTeams: number = 0;
   monthlySalaryExpense: number = 0;
+  teamIds: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8];
+  teamEmployees: Array<object> = [];
+  numberOfEmployeesTeamOne: number = 0;
+
   ngOnInit(): void {
     this.appStateService.getNumberOfEmployees().subscribe((number) => {
       this.numberOfEmployees = number;
@@ -25,6 +29,15 @@ export class DashboardComponent implements OnInit {
     });
     this.appStateService.getMonthlySalaryExpense().subscribe((number) => {
       this.monthlySalaryExpense = number;
+    });
+    this.appStateService.getTeams().subscribe((teams) => {
+      const team = teams.find((team) => {
+        return team.id === 1;
+      });
+      console.log(team?.employeeIds.length);
+      team
+        ? (this.numberOfEmployeesTeamOne = team.employeeIds.length)
+        : (this.numberOfEmployeesTeamOne = 0);
     });
   }
 }

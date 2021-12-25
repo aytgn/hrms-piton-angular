@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AppStateService } from '../services/appState.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class CardDashBoardComponent implements OnInit {
   @Input() number = 0;
   @Input() myIcon = '';
   @Input() color = '';
-  constructor(private appSateService: AppStateService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }

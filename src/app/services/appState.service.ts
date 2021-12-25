@@ -69,4 +69,14 @@ export class AppStateService {
       })
     );
   }
+  getTeamEmployeeIds(teamId: number) {
+    return this._teams.pipe(
+      map((teams) => {
+        return teams.find((team) => team.id === teamId);
+      }),
+      map((team) => {
+        return team?.employeeIds;
+      })
+    );
+  }
 }

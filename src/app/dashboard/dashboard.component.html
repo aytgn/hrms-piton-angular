@@ -1,36 +1,49 @@
-<div class="container mt-5">
-  <div class="row d-flex flex-row mx-n5">
-    <div class="col-md-3">
-      <app-card-dash-board
-        [item]="'Employees'"
-        [number]="numberOfEmployees"
-        [color]="'blue'"
-        [myIcon]="'user'"
-      ></app-card-dash-board>
+<div class="container">
+  <div class="container mt-5">
+    <div class="row d-flex flex-row mx-n5">
+      <div class="col-md-3">
+        <app-card-dash-board
+          [item]="'Employees'"
+          [number]="numberOfEmployees"
+          [color]="'blue'"
+          [myIcon]="'user'"
+        ></app-card-dash-board>
+      </div>
+      <div class="col-md-3">
+        <app-card-dash-board
+          [item]="'Departments'"
+          [number]="numberOfDepartments"
+          [color]="'green'"
+          [myIcon]="'department'"
+        ></app-card-dash-board>
+      </div>
+      <div class="col-md-3">
+        <app-card-dash-board
+          [item]="'Teams'"
+          [number]="numberOfTeams"
+          [color]="'yellow'"
+          [myIcon]="'team'"
+        ></app-card-dash-board>
+      </div>
+      <div class="col-md-3">
+        <app-card-dash-board
+          [item]="'Expense'"
+          [number]="monthlySalaryExpense"
+          [color]="'pink'"
+          [myIcon]="'expense'"
+        ></app-card-dash-board>
+      </div>
     </div>
-    <div class="col-md-3">
-      <app-card-dash-board
-        [item]="'Departments'"
-        [number]="numberOfDepartments"
-        [color]="'green'"
-        [myIcon]="'department'"
-      ></app-card-dash-board>
+  </div>
+  <div class="container mt-5 row">
+    <div class="col-md-4 myChartContainer mb-5">
+      <app-doughnut-chart
+        [numberOfEmployeeInTeamOne]="numberOfEmployeesTeamOne"
+      ></app-doughnut-chart>
     </div>
-    <div class="col-md-3">
-      <app-card-dash-board
-        [item]="'Teams'"
-        [number]="numberOfTeams"
-        [color]="'yellow'"
-        [myIcon]="'team'"
-      ></app-card-dash-board>
-    </div>
-    <div class="col-md-3">
-      <app-card-dash-board
-        [item]="'Expense'"
-        [number]="monthlySalaryExpense"
-        [color]="'pink'"
-        [myIcon]="'expense'"
-      ></app-card-dash-board>
+    <div class="col-md-4 myChartContainer mb-5"></div>
+    <div class="col-md-4 myChartContainer mb-5">
+      <app-doughnut-chart></app-doughnut-chart>
     </div>
   </div>
 </div>
