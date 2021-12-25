@@ -30,14 +30,6 @@ export class DashboardComponent implements OnInit {
     this.appStateService.getMonthlySalaryExpense().subscribe((number) => {
       this.monthlySalaryExpense = number;
     });
-    this.appStateService.getTeams().subscribe((teams) => {
-      const team = teams.find((team) => {
-        return team.id === 1;
-      });
-      console.log(team?.employeeIds.length);
-      team
-        ? (this.numberOfEmployeesTeamOne = team.employeeIds.length)
-        : (this.numberOfEmployeesTeamOne = 0);
-    });
+    this.appStateService.getTeamsSalary().subscribe();
   }
 }

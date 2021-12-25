@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { combineLatest, concat, forkJoin, merge, Observable } from 'rxjs';
 import { Department } from 'src/state/department/department.interface';
 import { Employee } from 'src/state/employee/employee.interface';
 import { selectDepartments, selectTeams } from 'src/state/selectors';
@@ -76,6 +76,30 @@ export class AppStateService {
       }),
       map((team) => {
         return team?.employeeIds;
+      })
+    );
+  }
+  getTeamsSalary() {
+    return combineLatest([this._teams, this._employees]).pipe(
+      map((data) => {
+        const teamsArray = data[0];
+        const employeeArray = data[1];
+
+        const teamSalaryArray: any[] = [];
+        teamsArray.forEach((team) => {
+          let teamSalary = 0;
+          const teamEmployees = employeeArray.filter((employee) => {
+            return team.employeeIds.includes(employee.id);
+          });
+          teamEmployees.forEach((employee) => {
+            teamSalary += employee.salary;
+          });
+          console.log(team.name);
+          console.log(teamSalary);
+
+          teamSalaryArray.push({ teamName: team.name, teamSalary: teamSalary });
+          console.log(teamSalaryArray);
+        });
       })
     );
   }
