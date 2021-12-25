@@ -1,0 +1,29 @@
+<div class="">
+  <div
+    class="card order-card myCardHoverEffect"
+    [ngClass]="{
+      'bg-c-blue': color === 'blue',
+      'bg-c-green': color === 'green',
+      'bg-c-yellow': color === 'yellow',
+      'bg-c-pink ': color === 'pink'
+    }"
+    routerLink="/employee_list"
+  >
+    <div class="card-block">
+      <h6 class="m-b-10">Number of {{ item }}</h6>
+      <h2 class="text-right">
+        <i
+        class="fas"
+          [ngClass]="{
+            'fa-user-friends': myIcon === 'user',
+            'fa-building': myIcon === 'department',
+            'fa-chalkboard-teacher': myIcon === 'team',
+            'fa-credit-card': myIcon === 'expense'
+          }"
+        ></i
+        ><span>{{ number }}</span>
+      </h2>
+      <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+    </div>
+  </div>
+</div>

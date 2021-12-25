@@ -27,6 +27,9 @@ import { departmentReducer } from 'src/state/department/department.reducer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { teamReducer } from 'src/state/team/team.reducer';
+import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.component';
+import { NgChartsModule } from 'ng2-charts';
+import { CardDashBoardComponent } from './card-dash-board/card-dash-board.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,8 @@ import { teamReducer } from 'src/state/team/team.reducer';
     EmployeeListComponent,
     EmployeePageComponent,
     DashboardComponent,
+    DoughnutChartComponent,
+    CardDashBoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,7 @@ import { teamReducer } from 'src/state/team/team.reducer';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

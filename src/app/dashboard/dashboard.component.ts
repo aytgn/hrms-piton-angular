@@ -9,14 +9,22 @@ import { AppStateService } from '../services/appState.service';
 })
 export class DashboardComponent implements OnInit {
   constructor(private appStateService: AppStateService) {}
-  numberOfEmployees: Observable<number> = new Observable();
-  numberOfDepartments: Observable<number> = new Observable();
-  numberOfTeams: Observable<number> = new Observable();
-  monthlySalaryExpense: Observable<number> = new Observable();
+  numberOfEmployees: number = 0;
+  numberOfDepartments: number = 0;
+  numberOfTeams: number = 0;
+  monthlySalaryExpense: number = 0;
   ngOnInit(): void {
-    this.numberOfEmployees = this.appStateService.getNumberOfEmployees();
-    this.numberOfDepartments = this.appStateService.getNumberOfDepartments();
-    this.numberOfTeams = this.appStateService.getNumberOfTeams();
-    this.monthlySalaryExpense = this.appStateService.getMonthlySalaryExpense();
+    this.appStateService.getNumberOfEmployees().subscribe((number) => {
+      this.numberOfEmployees = number;
+    });
+    this.appStateService.getNumberOfDepartments().subscribe((number) => {
+      this.numberOfDepartments = number;
+    });
+    this.appStateService.getNumberOfTeams().subscribe((number) => {
+      this.numberOfTeams = number;
+    });
+    this.appStateService.getMonthlySalaryExpense().subscribe((number) => {
+      this.monthlySalaryExpense = number;
+    });
   }
 }
