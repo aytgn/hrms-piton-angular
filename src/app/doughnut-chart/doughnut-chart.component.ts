@@ -47,5 +47,10 @@ export class DoughnutChartComponent implements OnInit, OnChanges {
         { data: [250, 130, 70] },
       ],
     };
+    this.doughnutChartLabels = [
+      'Download Sales',
+      'In-Store Sales',
+      'Mail-Order Sales',
+    ];
   }
 }
