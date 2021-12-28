@@ -17,9 +17,16 @@ import { AppStateService } from '../services/appState.service';
   styleUrls: ['./department-info.component.scss'],
 })
 export class DepartmentInfoComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() department: Department = { id: 0, name: '', teamIds: [] };
+  @Input() department: Department = {
+    id: 0,
+    name: '',
+    teamIds: [],
+    managerId: 0,
+  };
   departmentTeams: Array<Team> = [];
+  managerName: string = '';
   sub1: Subscription = new Subscription();
+  sub2: Subscription = new Subscription();
   constructor(private appStateService: AppStateService) {}
 
   //LIFECYCLE
@@ -28,7 +35,11 @@ export class DepartmentInfoComponent implements OnInit, OnChanges, OnDestroy {
       .getTeamsByDepartment(this.department)
       .subscribe((teams) => {
         this.departmentTeams = teams;
-        console.log(this.departmentTeams);
+      });
+    this.sub2 = this.appStateService
+      .getEmployeeById(this.department.managerId)
+      .subscribe((employee) => {
+        this.managerName = employee?.name as string;
       });
   }
   ngOnInit(): void {}

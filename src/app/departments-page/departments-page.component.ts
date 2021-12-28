@@ -18,6 +18,7 @@ export class DepartmentsPageComponent implements OnInit, OnDestroy {
     id: 0,
     name: '',
     teamIds: [],
+    managerId: 0,
   };
   //Events
   setSelectedDepartment(event: any) {
@@ -25,14 +26,12 @@ export class DepartmentsPageComponent implements OnInit, OnDestroy {
     this.selectedDepartment = this.departments.find((department) => {
       return department.name === departmentName;
     }) as Department;
-    console.log(this.selectedDepartment);
   }
   //LIFECYCLE
   ngOnInit(): void {
     this.sub1 = this.appStateService
       .getDepartments()
       .subscribe((departments) => {
-        console.log(departments);
         this.departments = departments;
       });
   }

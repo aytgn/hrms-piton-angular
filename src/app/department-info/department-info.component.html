@@ -1,22 +1,42 @@
 <div class="col">
   <div class="row">
-    <h4 class="mx-4 text-center">Deparments Info</h4>
-  </div>
-  <div class="row">
     <div class="col">
-      <h6>Department's Teams:</h6>
+      <div class="row">
+        <h4 class="mx-4 text-center">Deparments Info</h4>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6>Department's Teams:</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <ul class="list-group list-group-horizontal-md">
+            <li
+              class="list-group-item flex-fill w-90"
+              *ngFor="let team of departmentTeams"
+            >
+              {{ team.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-3">
     <div class="col">
-      <ul class="list-group list-group-horizontal-md">
-        <li
-          class="list-group-item flex-fill w-90"
-          *ngFor="let team of departmentTeams"
-        >
-          {{ team.name }}
-        </li>
-      </ul>
+      <div class="row">
+        <h6>Department's Manager:</h6>
+      </div>
+      <div class="row">
+        <div class="col">
+          <ul class="list-group list-group-horizontal-md">
+            <li class="list-group-item flex-fill w-100" *ngIf="managerName">
+              {{ managerName }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

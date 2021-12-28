@@ -95,11 +95,12 @@ export class StrapiApiService {
           const id = departmentData.id;
           const name = departmentData.attributes.name;
           const teamIds: Array<number> = [];
+          const managerId: number = departmentData.attributes.manager.data.id;
           departmentData.attributes.teams.data.forEach((teamData: any) => {
             let teamId = teamData.id;
             teamIds.push(teamId);
           });
-          const department = { id, name, teamIds };
+          const department = { id, name, teamIds, managerId };
           departments.push(department);
         });
         return departments;
