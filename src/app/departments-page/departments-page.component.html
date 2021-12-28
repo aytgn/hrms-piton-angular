@@ -1,16 +1,21 @@
 <div class="container-md m-5">
   <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <app-department-list
         [departments]="departments"
         (click)="setSelectedDepartment($event)"
       ></app-department-list>
     </div>
     <div class="col-md-1"></div>
-    <div class="col-md-7">
-      <app-department-info
-        [department]="selectedDepartment"
-      ></app-department-info>
+    <div class="col-md-8 mx-n2">
+      <div class="row w-95">
+        <app-department-info
+          [department]="selectedDepartment"
+        ></app-department-info>
+      </div>
+      <div class="row">
+        <app-line-chart [department]="selectedDepartment"></app-line-chart>
+      </div>
     </div>
   </div>
 </div>

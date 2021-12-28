@@ -33,6 +33,7 @@ import { CardDashBoardComponent } from './card-dash-board/card-dash-board.compon
 import { DepartmentsPageComponent } from './departments-page/departments-page.component';
 import { DepartmentInfoComponent } from './department-info/department-info.component';
 import { DepartmentListComponent } from './department-list/department-list.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { DepartmentListComponent } from './department-list/department-list.compo
     DepartmentsPageComponent,
     DepartmentInfoComponent,
     DepartmentListComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,
