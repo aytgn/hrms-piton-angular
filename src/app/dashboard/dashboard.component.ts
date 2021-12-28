@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AppStateService } from '../services/appState.service';
 
 @Component({
@@ -7,31 +7,46 @@ import { AppStateService } from '../services/appState.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private appStateService: AppStateService) {}
   numberOfEmployees: number = 0;
   numberOfDepartments: number = 0;
   numberOfTeams: number = 0;
   monthlySalaryExpense: number = 0;
-  teamIds: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8];
-  teamEmployees: Array<object> = [];
+  teamEmployees: object[] = [];
   numberOfEmployeesTeamOne: number = 0;
+  teamNameArr: string[] = [];
+  teamSalaryArr: number[] = [];
+  sub1: Subscription = new Subscription();
+  sub2: Subscription = new Subscription();
+  sub3: Subscription = new Subscription();
+  sub4: Subscription = new Subscription();
+  sub5: Subscription = new Subscription();
 
   ngOnInit(): void {
-    this.appStateService.getNumberOfEmployees().subscribe((number) => {
-      this.numberOfEmployees = number;
-    });
-    this.appStateService.getNumberOfDepartments().subscribe((number) => {
-      this.numberOfDepartments = number;
-    });
-    this.appStateService.getNumberOfTeams().subscribe((number) => {
+    this.sub1 = this.appStateService
+      .getNumberOfEmployees()
+      .subscribe((number) => {
+        this.numberOfEmployees = number;
+      });
+    this.sub2 = this.appStateService
+      .getNumberOfDepartments()
+      .subscribe((number) => {
+        this.numberOfDepartments = number;
+      });
+    this.sub3 = this.appStateService.getNumberOfTeams().subscribe((number) => {
       this.numberOfTeams = number;
     });
-    this.appStateService.getMonthlySalaryExpense().subscribe((number) => {
-      this.monthlySalaryExpense = number;
-    });
-    this.appStateService.getTeamsSalary().subscribe((data) => {
-      console.log(data);
-    });
+    this.sub4 = this.appStateService
+      .getMonthlySalaryExpense()
+      .subscribe((number) => {
+        this.monthlySalaryExpense = number;
+      });
+  }
+  ngOnDestroy() {
+    this.sub1.unsubscribe();
+    this.sub2.unsubscribe();
+    this.sub3.unsubscribe();
+    this.sub4.unsubscribe();
   }
 }

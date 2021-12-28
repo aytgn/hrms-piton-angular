@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { combineLatest, concat, forkJoin, merge, Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Department } from 'src/state/department/department.interface';
 import { Employee } from 'src/state/employee/employee.interface';
 import { selectDepartments, selectTeams } from 'src/state/selectors';
@@ -79,7 +79,7 @@ export class AppStateService {
       })
     );
   }
-  getTeamsSalary() {
+  getTeamsSalary(): Observable<{ teamName: string; teamSalary: number }[]> {
     return combineLatest([this._teams, this._employees]).pipe(
       map((data) => {
         const teamsArray = data[0];
@@ -96,6 +96,47 @@ export class AppStateService {
           teamSalaryArray.push({ teamName: team.name, teamSalary: teamSalary });
         });
         return teamSalaryArray;
+      })
+    );
+  }
+  getDepartmentsSalary(): Observable<
+    { departmentName: string; departmentSalary: number }[]
+  > {
+    return combineLatest([
+      this._departments,
+      this._employees,
+      this._teams,
+    ]).pipe(
+      map((data) => {
+        const departmentsArr = data[0];
+        const employeesArr = data[1];
+        const teamsArr = data[2];
+        const departmentSalaryArr: Array<{
+          departmentName: string;
+          departmentSalary: number;
+        }> = [];
+        departmentsArr.forEach((department) => {
+          const departmentTeamIds = department.teamIds;
+          const departmentTeams = teamsArr.filter((team) => {
+            return departmentTeamIds.includes(team.id);
+          });
+          const departmentEmployeesId: Array<any> = [];
+          departmentTeams.forEach((team) => {
+            departmentEmployeesId.push(...team.employeeIds);
+          });
+          const departmentEmployees = employeesArr.filter((employee) => {
+            return departmentEmployeesId.includes(employee.id);
+          });
+          let departmentSalary: number = 0;
+          departmentEmployees.forEach((employee) => {
+            departmentSalary += employee.salary;
+          });
+          departmentSalaryArr.push({
+            departmentName: department.name,
+            departmentSalary: departmentSalary,
+          });
+        });
+        return departmentSalaryArr;
       })
     );
   }

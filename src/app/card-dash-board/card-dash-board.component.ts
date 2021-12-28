@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AppStateService } from '../services/appState.service';
 
 @Component({
   selector: 'app-card-dash-board',

@@ -37,13 +37,11 @@
   </div>
   <div class="container mt-5 row">
     <div class="col-md-4 myChartContainer mb-5">
-      <app-doughnut-chart
-        [numberOfEmployeeInTeamOne]="numberOfEmployeesTeamOne"
-      ></app-doughnut-chart>
+      <app-doughnut-chart [dataType]="'teamSalary'"></app-doughnut-chart>
     </div>
     <div class="col-md-4 myChartContainer mb-5"></div>
     <div class="col-md-4 myChartContainer mb-5">
-      <app-doughnut-chart></app-doughnut-chart>
+      <app-doughnut-chart [dataType]="'departmentSalary'"></app-doughnut-chart>
     </div>
   </div>
 </div>
