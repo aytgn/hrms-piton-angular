@@ -30,6 +30,9 @@ import { teamReducer } from 'src/state/team/team.reducer';
 import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { CardDashBoardComponent } from './card-dash-board/card-dash-board.component';
+import { DepartmentsPageComponent } from './departments-page/departments-page.component';
+import { DepartmentInfoComponent } from './department-info/department-info.component';
+import { DepartmentListComponent } from './department-list/department-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { CardDashBoardComponent } from './card-dash-board/card-dash-board.compon
     DashboardComponent,
     DoughnutChartComponent,
     CardDashBoardComponent,
+    DepartmentsPageComponent,
+    DepartmentInfoComponent,
+    DepartmentListComponent,
   ],
   imports: [
     BrowserModule,

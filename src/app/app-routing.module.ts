@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DepartmentsPageComponent } from './departments-page/departments-page.component';
 import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeePageComponent } from './employee-page/employee-page.component';
@@ -15,12 +16,12 @@ const routes: Routes = [
     component: EmployeeListComponent,
   },
   {
-    path: '',
-    component: DashboardComponent,
+    path: 'departments_page',
+    component: DepartmentsPageComponent,
   },
   {
-    path: 'graph',
-    component: DoughnutChartComponent,
+    path: '',
+    component: DashboardComponent,
   },
 ];
 

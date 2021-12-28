@@ -1,0 +1,15 @@
+<div class="col">
+  <div class="row"><h4 class="mx-4">Departments List</h4></div>
+  <div class="row">
+    <div class="list-group">
+      <div class="col" *ngFor="let department of departments">
+        <button
+          type="button"
+          class="list-group-item list-group-item-action myDepartmentButton py-4"
+        >
+          {{ department.name }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container-md m-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <app-department-list
+        [departments]="departments"
+        (click)="setSelectedDepartment($event)"
+      ></app-department-list>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+      <app-department-info
+        [department]="selectedDepartment"
+      ></app-department-info>
+    </div>
+  </div>
+</div>

@@ -140,4 +140,13 @@ export class AppStateService {
       })
     );
   }
+  getTeamsByDepartment(department: Department) {
+    return this._teams.pipe(
+      map((teams) => {
+        return teams.filter((team) => {
+          return department.teamIds.includes(team.id);
+        });
+      })
+    );
+  }
 }
