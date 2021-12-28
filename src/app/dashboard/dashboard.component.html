@@ -36,11 +36,13 @@
     </div>
   </div>
   <div class="container mt-5 row">
-    <div class="col-md-4 myChartContainer mb-5">
+    <div class="col-md-5 myChartContainer mb-5">
+      <h4>Monthly Expense($) per Team</h4>
       <app-doughnut-chart [dataType]="'teamSalary'"></app-doughnut-chart>
     </div>
-    <div class="col-md-4 myChartContainer mb-5"></div>
-    <div class="col-md-4 myChartContainer mb-5">
+    <div class="col-md-2 myChartContainer mb-5"></div>
+    <div class="col-md-5 myChartContainer mb-5">
+      <h4>Monthly Expense($) per Department</h4>
       <app-doughnut-chart [dataType]="'departmentSalary'"></app-doughnut-chart>
     </div>
   </div>
