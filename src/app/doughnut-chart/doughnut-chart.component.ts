@@ -14,10 +14,6 @@ export class DoughnutChartComponent implements OnInit, OnDestroy {
   sub1: Subscription = new Subscription();
   sub2: Subscription = new Subscription();
   //Doughnut
-  teamNameArr: Array<string> = [];
-  teamSalaryArr: Array<number> = [];
-  departmentNameArr: Array<string> = [];
-  departmentSalaryArr: Array<number> = [];
   doughnutChartLabels: string[] = [];
   doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
@@ -35,39 +31,34 @@ export class DoughnutChartComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.dataType === 'teamSalary') {
       this.sub1 = this.appStateService.getTeamsSalary().subscribe((data) => {
-        data.map(({ teamName, teamSalary }) => {
-          this.teamNameArr.push(teamName);
-          this.teamSalaryArr.push(teamSalary);
+        const teamNameArr: Array<string> = [];
+        const teamSalaryArr: Array<number> = [];
+        data.forEach(({ teamName, teamSalary }) => {
+          teamNameArr.push(teamName);
+          teamSalaryArr.push(teamSalary);
         });
         this.doughnutChartData = {
-          labels: this.doughnutChartLabels,
-          datasets: [
-            {
-              data: this.teamSalaryArr,
-            },
-          ],
+          labels: teamNameArr,
+          datasets: [{ data: teamSalaryArr }],
         };
-        this.doughnutChartLabels = this.teamNameArr;
+        this.doughnutChartType = 'doughnut';
       });
     }
     if (this.dataType === 'departmentSalary') {
       this.sub2 = this.appStateService
         .getDepartmentsSalary()
         .subscribe((data) => {
-          data.map(({ departmentName, departmentSalary }) => {
-            console.log(departmentName);
-            this.departmentNameArr.push(departmentName);
-            this.departmentSalaryArr.push(departmentSalary);
+          const departmentNameArr: Array<string> = [];
+          const departmentSalaryArr: Array<number> = [];
+          data.forEach(({ departmentName, departmentSalary }) => {
+            departmentNameArr.push(departmentName);
+            departmentSalaryArr.push(departmentSalary);
           });
           this.doughnutChartData = {
-            labels: this.doughnutChartLabels,
-            datasets: [
-              {
-                data: this.departmentSalaryArr,
-              },
-            ],
+            labels: departmentNameArr,
+            datasets: [{ data: departmentSalaryArr }],
           };
-          this.doughnutChartLabels = this.departmentNameArr;
+          this.doughnutChartType = 'doughnut';
         });
     }
   }
