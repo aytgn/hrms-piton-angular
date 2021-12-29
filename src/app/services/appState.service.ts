@@ -149,4 +149,13 @@ export class AppStateService {
       })
     );
   }
+  getEmployeesByTeam(team: Team) {
+    return this._employees.pipe(
+      map((employees) => {
+        return employees.filter((employee) => {
+          return team.employeeIds.includes(employee.id);
+        });
+      })
+    );
+  }
 }

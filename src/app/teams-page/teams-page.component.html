@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12 mt-3" *ngFor="let department of departments">
+      <app-department-team-list
+        [department]="department"
+      ></app-department-team-list>
+    </div>
+  </div>
+</div>

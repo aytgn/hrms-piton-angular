@@ -1,0 +1,12 @@
+<div class="container p-1 myContainer">
+  <div class="row p-1">
+    <h5 class="text-center">Department: {{ department.name }}</h5>
+  </div>
+  <div class="row m-1">
+    <div class="list-group pb-3 px-1 mx-n2">
+      <div class="row" *ngFor="let team of teams">
+        <app-team-card [team]="team"></app-team-card>
+      </div>
+    </div>
+  </div>
+</div>

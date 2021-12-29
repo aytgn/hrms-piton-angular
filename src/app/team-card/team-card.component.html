@@ -1,0 +1,17 @@
+<div class="container">
+  <a
+    href="#"
+    class="list-group-item list-group-item-action myItemContainer m-2 bg-light"
+  >
+    <div class="d-flex w-100 justify-content-between mt-1">
+      <h5 class="mb-1">Team: {{ team.name }}</h5>
+    </div>
+    <p class="mb-1">
+      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+      risus varius blandit.
+    </p>
+    <ul class="">
+      <li *ngFor="let employee of employees">{{ employee.name }}</li>
+    </ul>
+  </a>
+</div>

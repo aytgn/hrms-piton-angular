@@ -34,6 +34,9 @@ import { DepartmentsPageComponent } from './departments-page/departments-page.co
 import { DepartmentInfoComponent } from './department-info/department-info.component';
 import { DepartmentListComponent } from './department-list/department-list.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { TeamsPageComponent } from './teams-page/teams-page.component';
+import { DepartmentTeamListComponent } from './department-team-list/department-team-list.component';
+import { TeamCardComponent } from './team-card/team-card.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     DepartmentInfoComponent,
     DepartmentListComponent,
     LineChartComponent,
+    TeamsPageComponent,
+    DepartmentTeamListComponent,
+    TeamCardComponent,
   ],
   imports: [
     BrowserModule,
