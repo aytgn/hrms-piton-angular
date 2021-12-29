@@ -10,8 +10,12 @@
       Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
       risus varius blandit.
     </p>
-    <ul class="">
-      <li *ngFor="let employee of employees">{{ employee.name }}</li>
+    <h6 class="py-2">Employees:</h6>
+    <hr />
+    <ul class="py">
+      <li *ngFor="let employee of employees">
+        <p style="font-size: large">{{ employee.name }}</p>
+      </li>
     </ul>
   </a>
 </div>
