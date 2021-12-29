@@ -6,4 +6,5 @@ export interface AppState {
   employees: Array<Employee>;
   departments: Array<Department>;
   teams: Array<Team>;
+  loggedEmployee: Employee;
 }

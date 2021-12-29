@@ -24,7 +24,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { departmentReducer } from 'src/state/department/department.reducer';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { teamReducer } from 'src/state/team/team.reducer';
 import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.component';
@@ -39,6 +39,8 @@ import { DepartmentTeamListComponent } from './department-team-list/department-t
 import { TeamCardComponent } from './team-card/team-card.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { loggedEmployeeReducer } from 'src/state/loggedEmployee/loggedEmployee.reducer';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { FooterComponent } from './footer/footer.component';
     TeamCardComponent,
     NavBarComponent,
     FooterComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { FooterComponent } from './footer/footer.component';
       employees: employeeReducer,
       departments: departmentReducer,
       teams: teamReducer,
+      loggedEmployee: loggedEmployeeReducer,
     }),
     MdbAccordionModule,
     MdbCarouselModule,
@@ -84,6 +88,7 @@ import { FooterComponent } from './footer/footer.component';
     MdbValidationModule,
     BrowserAnimationsModule,
     NgChartsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

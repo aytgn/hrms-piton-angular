@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DepartmentsPageComponent } from './departments-page/departments-page.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeePageComponent } from './employee-page/employee-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { TeamsPageComponent } from './teams-page/teams-page.component';
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+  },
+  {
+    path: 'login_page',
+    component: LoginPageComponent,
   },
 ];
 

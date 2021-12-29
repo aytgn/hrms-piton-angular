@@ -3,9 +3,13 @@ import { Store } from '@ngrx/store';
 import { combineLatest, Observable } from 'rxjs';
 import { Department } from 'src/state/department/department.interface';
 import { Employee } from 'src/state/employee/employee.interface';
-import { selectDepartments, selectTeams } from 'src/state/selectors';
+import {
+  selectDepartments,
+  selectLoggedEmployee,
+  selectTeams,
+} from 'src/state/selectors';
 import { selectEmployees } from 'src/state/selectors';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { Team } from 'src/state/team/team.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -13,11 +17,13 @@ export class AppStateService {
   private _employees: Observable<Array<Employee>>;
   private _departments: Observable<Array<Department>>;
   private _teams: Observable<Array<Team>>;
+  private _loggedEmployee: Observable<Employee>;
 
   constructor(private store: Store) {
     this._employees = this.store.select(selectEmployees);
     this._departments = this.store.select(selectDepartments);
     this._teams = this.store.select(selectTeams);
+    this._loggedEmployee = this.store.select(selectLoggedEmployee);
   }
   getEmployees(): Observable<Array<Employee>> {
     return this._employees;
@@ -27,6 +33,9 @@ export class AppStateService {
   }
   getTeams(): Observable<Array<Team>> {
     return this._teams;
+  }
+  getLoggedEmployee(): Observable<Employee> {
+    return this._loggedEmployee;
   }
   getEmployeeById(employeeId: number): Observable<Employee | undefined> {
     return this._employees.pipe(
@@ -154,6 +163,15 @@ export class AppStateService {
       map((employees) => {
         return employees.filter((employee) => {
           return team.employeeIds.includes(employee.id);
+        });
+      })
+    );
+  }
+  getEmployeeByEmail(email: string): Observable<Employee | undefined> {
+    return this._employees.pipe(
+      map((employees) => {
+        return employees.find((employee) => {
+          return employee.email === email;
         });
       })
     );
