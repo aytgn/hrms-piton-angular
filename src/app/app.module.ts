@@ -42,6 +42,7 @@ import { FooterComponent } from './footer/footer.component';
 import { loggedEmployeeReducer } from 'src/state/loggedEmployee/loggedEmployee.reducer';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { EmployeeAccordionComponent } from './employee-accordion/employee-accordion.component';
+import { editModeReducer } from 'src/state/editMode/editMode.reducer';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { EmployeeAccordionComponent } from './employee-accordion/employee-accord
       departments: departmentReducer,
       teams: teamReducer,
       loggedEmployee: loggedEmployeeReducer,
+      editMode: editModeReducer,
     }),
     MdbAccordionModule,
     MdbCarouselModule,

@@ -10,3 +10,4 @@ export const selectEmployees =
 export const selectTeams = createFeatureSelector<Array<Team>>('teams');
 export const selectLoggedEmployee =
   createFeatureSelector<Employee>('loggedEmployee');
+export const selectEditMode = createFeatureSelector<boolean>('editMode');

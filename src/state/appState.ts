@@ -7,4 +7,5 @@ export interface AppState {
   departments: Array<Department>;
   teams: Array<Team>;
   loggedEmployee: Employee;
+  editMode: boolean;
 }

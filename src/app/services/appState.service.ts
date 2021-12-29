@@ -5,6 +5,7 @@ import { Department } from 'src/state/department/department.interface';
 import { Employee } from 'src/state/employee/employee.interface';
 import {
   selectDepartments,
+  selectEditMode,
   selectLoggedEmployee,
   selectTeams,
 } from 'src/state/selectors';
@@ -18,12 +19,14 @@ export class AppStateService {
   private _departments: Observable<Array<Department>>;
   private _teams: Observable<Array<Team>>;
   private _loggedEmployee: Observable<Employee>;
+  private _editMode: Observable<boolean>;
 
   constructor(private store: Store) {
     this._employees = this.store.select(selectEmployees);
     this._departments = this.store.select(selectDepartments);
     this._teams = this.store.select(selectTeams);
     this._loggedEmployee = this.store.select(selectLoggedEmployee);
+    this._editMode = this.store.select(selectEditMode);
   }
   getEmployees(): Observable<Array<Employee>> {
     return this._employees;
@@ -33,6 +36,9 @@ export class AppStateService {
   }
   getTeams(): Observable<Array<Team>> {
     return this._teams;
+  }
+  getEditMode(): Observable<boolean> {
+    return this._editMode;
   }
   getLoggedEmployee(): Observable<Employee> {
     return this._loggedEmployee;

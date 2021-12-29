@@ -1,4 +1,4 @@
-<section style="background-color: #eee">
+<section style="background-color: #eee mt-n3">
   <div class="container py-5">
     <div class="row">
       <div class="col"></div>
@@ -69,40 +69,110 @@
         <div class="card mb-4">
           <div class="card-body">
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
+              <div class="row" *ngIf="!editMode">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ (employee | async)?.name }}</p>
+                </div>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ (employee | async)?.name }}</p>
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">
-                  {{ (employee | async)?.email }}
-                </p>
-              </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ (employee | async)?.phone }}</p>
+              <div class="row" *ngIf="editMode">
+                <div class="col-sm-12">
+                  <mdb-form-control>
+                    <input
+                      mdbInput
+                      type="text"
+                      id="nameInput"
+                      class="form-control form-control-lg"
+                    />
+                    <label mdbLabel class="form-label" for="nameInput">{{
+                      (employee | async)?.name
+                    }}</label>
+                  </mdb-form-control>
+                </div>
               </div>
             </div>
             <hr />
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
+              <div class="row" *ngIf="!editMode">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">
+                    {{ (employee | async)?.email }}
+                  </p>
+                </div>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ (employee | async)?.address }}</p>
+              <div class="row" *ngIf="editMode">
+                <div class="col-sm-12">
+                  <mdb-form-control>
+                    <input
+                      mdbInput
+                      type="text"
+                      id="emailInput"
+                      class="form-control form-control-lg"
+                    />
+                    <label mdbLabel class="form-label" for="emailInput">
+                      {{ (employee | async)?.email }}</label
+                    >
+                  </mdb-form-control>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="row" *ngIf="!editMode">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ (employee | async)?.phone }}</p>
+                </div>
+              </div>
+              <div class="row" *ngIf="editMode">
+                <div class="col-sm-12">
+                  <mdb-form-control>
+                    <input
+                      mdbInput
+                      type="text"
+                      id="phoneInput"
+                      class="form-control form-control-lg"
+                    />
+                    <label mdbLabel class="form-label" for="phoneInput">
+                      {{ (employee | async)?.phone }}</label
+                    >
+                  </mdb-form-control>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="row" *ngIf="!editMode">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">
+                    {{ (employee | async)?.address }}
+                  </p>
+                </div>
+              </div>
+              <div class="row" *ngIf="editMode">
+                <div class="col-sm-12">
+                  <mdb-form-control>
+                    <input
+                      mdbInput
+                      type="text"
+                      id="addressInput"
+                      class="form-control form-control-lg"
+                    />
+                    <label mdbLabel class="form-label" for="addressInput">
+                      {{ (employee | async)?.address }}</label
+                    >
+                  </mdb-form-control>
+                </div>
               </div>
             </div>
           </div>
@@ -116,33 +186,143 @@
                     >Employee Status</span
                   >
                 </p>
-                <p class="mb-1" style="font-size: 0.77rem">Salary</p>
-                <div class="rounded" style="height: 5px">
-                  <div style="width: 80%">
-                    <p>{{ (employee | async)?.salary }} $</p>
+                <div class="row">
+                  <div class="row" *ngIf="!editMode">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Salary</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">
+                        {{ (employee | async)?.salary }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="editMode">
+                    <div class="col-sm-12">
+                      <mdb-form-control>
+                        <input
+                          mdbInput
+                          type="text"
+                          id="salaryInput"
+                          class="form-control form-control-lg"
+                        />
+                        <label mdbLabel class="form-label" for="salaryInput">{{
+                          (employee | async)?.salary
+                        }}</label>
+                      </mdb-form-control>
+                    </div>
                   </div>
                 </div>
-                <p class="mt-4 mb-1" style="font-size: 0.77rem">Team</p>
-                <div class="rounded" style="height: 5px">
-                  <div style="width: 80%">
-                    <p>{{ (employee | async)?.team }} team</p>
+                <hr />
+                <div class="row">
+                  <div class="row" *ngIf="!editMode">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Team</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">
+                        {{ (employee | async)?.team }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="editMode">
+                    <div class="col-sm-12">
+                      <mdb-form-control>
+                        <input
+                          mdbInput
+                          type="text"
+                          id="teamInput"
+                          class="form-control form-control-lg"
+                        />
+                        <label mdbLabel class="form-label" for="teamInput">{{
+                          (employee | async)?.team
+                        }}</label>
+                      </mdb-form-control>
+                    </div>
                   </div>
                 </div>
-                <p class="mt-4 mb-1" style="font-size: 0.77rem">Department</p>
-                <div class="rounded" style="height: 5px">
-                  <div style="width: 80%">
-                    <p>{{ (employee | async)?.department }} department</p>
+                <hr />
+                <div class="row">
+                  <div class="row" *ngIf="!editMode">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Department</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">
+                        {{ (employee | async)?.department }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="editMode">
+                    <div class="col-sm-12">
+                      <mdb-form-control>
+                        <input
+                          mdbInput
+                          type="text"
+                          id="departmentInput"
+                          class="form-control form-control-lg"
+                        />
+                        <label
+                          mdbLabel
+                          class="form-label"
+                          for="departmentInput"
+                          >{{ (employee | async)?.department }}</label
+                        >
+                      </mdb-form-control>
+                    </div>
                   </div>
                 </div>
-                <p class="mt-4 mb-1" style="font-size: 0.77rem">
-                  Current Project
-                </p>
-                <div class="rounded mb-3" style="height: 5px">
-                  <div style="width: 80%">
-                    <p>{{ (employee | async)?.project }} project</p>
+                <hr />
+                <div class="row">
+                  <div class="row" *ngIf="!editMode">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Current Project</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">
+                        {{ (employee | async)?.project }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="editMode">
+                    <div class="col-sm-12">
+                      <mdb-form-control>
+                        <input
+                          mdbInput
+                          type="text"
+                          id="projectInput"
+                          class="form-control form-control-lg"
+                        />
+                        <label mdbLabel class="form-label" for="projectInput">{{
+                          (employee | async)?.project
+                        }}</label>
+                      </mdb-form-control>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="row">
+              <button
+                *ngIf="!editMode"
+                mdbRipple
+                type="button"
+                class="btn btn-danger mt-4 w-90 fs-6"
+                (click)="editModeOn()"
+              >
+                Enter Edit Mode
+              </button>
+            </div>
+            <div class="row">
+              <button
+                *ngIf="editMode"
+                mdbRipple
+                type="button"
+                class="btn btn-primary mt-4 w-90 fs-6"
+                (click)="editModeOff()"
+              >
+                Enter View Mode
+              </button>
             </div>
           </div>
         </div>
