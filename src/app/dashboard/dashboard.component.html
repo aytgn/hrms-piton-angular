@@ -7,7 +7,7 @@
           [number]="numberOfEmployees"
           [color]="'blue'"
           [myIcon]="'user'"
-          routerLink="employee_list"
+          [routerLink]="['/employee_list']"
         ></app-card-dash-board>
       </div>
       <div class="col-md-3">
@@ -16,7 +16,7 @@
           [number]="numberOfDepartments"
           [color]="'green'"
           [myIcon]="'department'"
-          routerLink="departments_page"
+          [routerLink]="['/departments_page']"
         ></app-card-dash-board>
       </div>
       <div class="col-md-3">
@@ -25,7 +25,7 @@
           [number]="numberOfTeams"
           [color]="'yellow'"
           [myIcon]="'team'"
-          routerLink="teams_page"
+          [routerLink]="['/teams_page']"
         ></app-card-dash-board>
       </div>
       <div class="col-md-3">

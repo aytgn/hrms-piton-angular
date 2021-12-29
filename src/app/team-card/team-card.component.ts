@@ -11,6 +11,7 @@ import { AppStateService } from '../services/appState.service';
 })
 export class TeamCardComponent implements OnInit, OnDestroy {
   @Input() team: Team = { id: 0, name: '', employeeIds: [], departmentId: 0 };
+
   sub1: Subscription = new Subscription();
   employees: Array<Employee> = [];
   constructor(private appStateService: AppStateService) {}

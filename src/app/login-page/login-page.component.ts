@@ -35,6 +35,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       })
       .unsubscribe();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.appStateService.getLoggedEmployee().subscribe((employee) => {
+      if (employee.id !== 0) {
+        this.router.navigate(['/home_page']);
+      }
+    });
+  }
   ngOnDestroy(): void {}
 }

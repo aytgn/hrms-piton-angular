@@ -1,6 +1,5 @@
-<div class="container">
+<div class="container shadow-5-strong mx-2 p-3">
   <a
-    href="#"
     class="list-group-item list-group-item-action myItemContainer m-2 bg-light"
   >
     <div class="d-flex w-100 justify-content-between mt-1">
@@ -12,10 +11,6 @@
     </p>
     <h6 class="py-2">Employees:</h6>
     <hr />
-    <ul class="py">
-      <li *ngFor="let employee of employees">
-        <p style="font-size: large">{{ employee.name }}</p>
-      </li>
-    </ul>
+    <app-employee-accordion [employees]="employees"></app-employee-accordion>
   </a>
 </div>

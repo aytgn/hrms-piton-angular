@@ -1,0 +1,21 @@
+<mdb-accordion [flush]="true">
+  <mdb-accordion-item
+    *ngFor="let employee of employees"
+    class="py-2 my-3 shadow-5"
+  >
+    <ng-template mdbAccordionItemHeader>
+      <p class="fs-5">{{ employee.name }}</p></ng-template
+    >
+    <ng-template mdbAccordionItemBody>
+      <ul>
+        <li *ngIf="employee.project" class="pt-1 fs-5">
+          <strong>Project: </strong> {{ employee.project }}
+        </li>
+        <li class="pt-1 fs-5"><strong>Email: </strong> {{ employee.email }}</li>
+        <li class="pt-1 fs-5" *ngIf="employee.linkedinUrl">
+          <strong>Linkedin:</strong> {{ employee.linkedinUrl }}
+        </li>
+      </ul>
+    </ng-template>
+  </mdb-accordion-item>
+</mdb-accordion>

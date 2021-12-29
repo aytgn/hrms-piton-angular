@@ -18,7 +18,7 @@ export class DepartmentTeamListComponent implements OnInit, OnDestroy {
   };
   teams: Array<Team> = [];
   sub1: Subscription = new Subscription();
-
+  randomNumber: number = 0;
   constructor(private appStateService: AppStateService) {}
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class DepartmentTeamListComponent implements OnInit, OnDestroy {
       .subscribe((teams) => {
         this.teams = teams;
       });
+    this.randomNumber = Math.random();
   }
   ngOnDestroy(): void {
     this.sub1.unsubscribe();

@@ -1,6 +1,16 @@
-<div class="container p-1 myContainer">
-  <div class="row p-1">
-    <h5 class="text-center">Department: {{ department.name }}</h5>
+<div
+  class="container p-1"
+  [ngClass]="{
+    'bg-primary': randomNumber > 0 && randomNumber < 0.15,
+    'bg-secondary': randomNumber > 0.15 && randomNumber < 0.3,
+    'bg-success': randomNumber > 0.3 && randomNumber < 0.45,
+    'bg-danger': randomNumber > 0.45 && randomNumber < 0.6,
+    'bg-warning': randomNumber > 0.6 && randomNumber < 0.75,
+    'bg-info': randomNumber > 0.75 && randomNumber < 1
+  }"
+>
+  <div class="row py-4">
+    <h4 class="text-center">Department: {{ department.name }}</h4>
   </div>
   <div class="row m-1">
     <div class="list-group pb-3 px-1 mx-n2">

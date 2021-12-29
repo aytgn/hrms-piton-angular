@@ -41,6 +41,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { loggedEmployeeReducer } from 'src/state/loggedEmployee/loggedEmployee.reducer';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { EmployeeAccordionComponent } from './employee-accordion/employee-accordion.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     NavBarComponent,
     FooterComponent,
     LoginPageComponent,
+    EmployeeAccordionComponent,
   ],
   imports: [
     BrowserModule,
