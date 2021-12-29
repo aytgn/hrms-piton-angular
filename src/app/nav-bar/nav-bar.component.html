@@ -10,31 +10,24 @@
     >
       <i class="fas fa-bars"></i>
     </button>
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand px-5" routerLink="">Navbar</a>
     <div
       class="collapse navbar-collapse"
       id="navbarTogglerDemo03"
       mdbCollapse
       #togglerThirdExample="mdbCollapse"
     >
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-n5">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" routerLink="">Link</a>
         </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 px-5">
         <li class="nav-item">
-          <a
-            class="nav-link disabled"
-            href="#"
-            tabindex="-1"
-            aria-disabled="true"
-            >Disabled</a
-          >
-        </li>
-        <li class="nav-item">
-          <p>logged as: {{ loggedEmployee.name }}</p>
+          <a class="nav-link disabled">logged as: {{ loggedEmployee.name }}</a>
         </li>
       </ul>
     </div>

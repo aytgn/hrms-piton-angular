@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { loginEmployee } from 'src/state/loggedEmployee/loggedEmployee.actions';
@@ -14,7 +15,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   email: string = '';
   password: string = '';
   sub1: Subscription = new Subscription();
-  constructor(private appStateService: AppStateService, private store: Store) {}
+  constructor(
+    private appStateService: AppStateService,
+    private store: Store,
+    private router: Router
+  ) {}
   onSubmit(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
@@ -25,6 +30,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         if (employee) {
           password === '123';
           this.store.dispatch(loginEmployee({ employee }));
+          this.router.navigate(['/home_page']);
         }
       })
       .unsubscribe();

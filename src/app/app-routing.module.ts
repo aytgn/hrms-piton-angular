@@ -25,12 +25,17 @@ const routes: Routes = [
     component: TeamsPageComponent,
   },
   {
-    path: '',
+    path: 'login_page',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'home_page',
     component: DashboardComponent,
   },
   {
-    path: 'login_page',
-    component: LoginPageComponent,
+    path: '',
+    redirectTo: '/login_page',
+    pathMatch: 'full',
   },
 ];
 

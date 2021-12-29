@@ -9,7 +9,7 @@ import {
   selectTeams,
 } from 'src/state/selectors';
 import { selectEmployees } from 'src/state/selectors';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Team } from 'src/state/team/team.interface';
 
 @Injectable({ providedIn: 'root' })
